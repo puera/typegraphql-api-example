@@ -18,6 +18,8 @@ export class LoginResolver {
 
     if(!validPass) return undefined
 
+    if(!user.confirmed) return undefined
+
     req.session.userId = user.id
 
     return user

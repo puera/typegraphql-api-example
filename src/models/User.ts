@@ -29,6 +29,9 @@ export class User extends BaseEntity {
   @Field()
   password: string
 
+  @Column("bool", { default: false })
+  confirmed: boolean
+
   @CreateDateColumn()
   @Field()
   created_at: Date

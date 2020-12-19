@@ -11,10 +11,11 @@ import { RegisterResolver } from "./graphql/modules/user/Register"
 import { redis } from "./config/redis"
 import { LoginResolver } from "./graphql/modules/user/Login"
 import { MeResolver } from "./graphql/modules/user/Me"
+import { ConfirmUserResolver } from "./graphql/modules/user/ConfirmUser"
 
 const bootstrap = async () => {
   const schema = await buildSchema({
-    resolvers: [RegisterResolver, LoginResolver, MeResolver]
+    resolvers: [RegisterResolver, LoginResolver, MeResolver, ConfirmUserResolver]
   })
   const apolloServer = new ApolloServer({
     schema,
@@ -47,7 +48,9 @@ const bootstrap = async () => {
 
   apolloServer.applyMiddleware({ app, cors: false })
 
-  app.listen(4000, () => console.log('Server runing on http://localhost:4000/graphql'))
+  app.listen(4000, () => {
+    console.log('Server runing on http://localhost:4000/graphql')
+  })
 }
 
 bootstrap()
