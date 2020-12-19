@@ -10,7 +10,7 @@ const bootstrap = async () => {
     resolvers: [RegisterResolver]
   })
   const apolloServer = new ApolloServer({
-    schema
+    schema,
   })
   const app = express()
 
