@@ -12,10 +12,18 @@ import { redis } from "./config/redis"
 import { LoginResolver } from "./graphql/modules/user/Login"
 import { MeResolver } from "./graphql/modules/user/Me"
 import { ConfirmUserResolver } from "./graphql/modules/user/ConfirmUser"
+import { ForgotPasswordResolver } from "./graphql/modules/user/ForgotPassword"
 
 const bootstrap = async () => {
   const schema = await buildSchema({
-    resolvers: [RegisterResolver, LoginResolver, MeResolver, ConfirmUserResolver]
+    resolvers: [
+      RegisterResolver, 
+      LoginResolver, 
+      MeResolver, 
+      ConfirmUserResolver, 
+      ForgotPasswordResolver,
+      ConfirmUserResolver
+      ]
   })
   const apolloServer = new ApolloServer({
     schema,
